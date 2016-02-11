@@ -8,23 +8,21 @@
 <body>
 
 <div class="header">
-  <div class="container">
-    <div class="row">
-      <div class="logo">
-        <?php print file_get_contents('images/task.svg'); ?>
-      </div>
-
-      <div class="site-title">
-        <h2>ToDo Application</h2>
-      </div>
-    </div>
+  <div class="site-title">
+    <h2>ToDo Application</h2>
   </div>
 
   <div class="nav-bar">
     <div class="page-tabs">
-      <button class="dashboard" place="dashboard">Dashboard</button>
-      <button class="todo" place="todo">Todo</button>
-      <button class="completed" place="completed">Completed</button>
+      <button class="dashboard" place="dashboard">
+        <?php print file_get_contents('images/home153.svg'); ?>
+      </button>
+      <button class="todo" place="todo">
+        <?php print file_get_contents('images/text70.svg'); ?>
+      </button>
+      <button class="completed" place="completed">
+        <?php print file_get_contents('images/check52.svg'); ?>
+      </button>
     </div>
   </div>
 </div>

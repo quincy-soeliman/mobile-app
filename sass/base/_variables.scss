@@ -1,10 +1,12 @@
 // Colors
-$color-primary: #de4f4f;
+$color-primary: #2A3133;
 $color-primary-dark: darken($color-primary, 25%);
-$color-primary-light: lighten($color-primary, 25%);
-$color-secondary: #27272b;
+$color-primary-light: lighten($color-primary, 10%);
+$color-secondary: #E16123;
 $color-secondary-dark: darken($color-secondary, 25%);
 $color-secondary-light: lighten($color-secondary, 25%);
-$color-tertiary: #fff;
+$color-tertiary: #EBEBEA;
 $color-tertiary-dark: darken($color-tertiary, 25%);
 $color-tertiary-light: lighten($color-tertiary, 25%);
+
+$site-bg-color: #white;

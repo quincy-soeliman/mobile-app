@@ -1,28 +1,35 @@
 .header {
-  background-color: $color-primary;
-
-  .logo {
-    @extend .col-sm-2;
-
-    svg {
-      fill: $color-primary-dark;
-    }
-  }
+  background-color: white;
 
   .site-title {
-    @extend .col-sm-10;
-    @include Montserrat-Light(16px);
-    color: $color-primary-dark;
+    @extend .col-xs-12;
+    @include Roboto-Light(16px);
+    color: black;
+    text-transform: uppercase;
   }
 
   .nav-bar {
     .page-tabs {
+      text-align: center;
+
       button {
-        @extend .col-sm-4;
-        @include Montserrat-Regular(14px);
-        border: 1px solid $color-secondary-light;
-        background-color: white;
-        color: $color-secondary;
+        @extend .col-xs-4;
+        @include transition(all 0.4s ease-in-out);
+        padding: 10px;
+        border: 0;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: $color-primary-light;
+        }
+
+        svg {
+          display: block;
+          width: 30px;
+          height: auto;
+          margin: 0 auto;
+          fill: $color-tertiary;
+        }
       }
     }
   }

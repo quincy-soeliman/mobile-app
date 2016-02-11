@@ -1,10 +1,30 @@
 // Fonts
-@mixin Montserrat-Regular($font-size) {
-  font-family: Monsterrat;
+@mixin Roboto($font-size) {
+  font-family: Roboto;
   font-size: $font-size;
 }
 
-@mixin Montserrat-Light($font-size) {
-  font-family: Montserrat-Light;
+@mixin Roboto-Light($font-size) {
+  font-family: Roboto-Light;
+  font-size: $font-size;
+}
+
+@mixin Roboto-Bold($font-size) {
+  font-family: Roboto-Bold;
+  font-size: $font-size;
+}
+
+@mixin Gotham($font-size) {
+  font-family: Gotham;
+  font-size: $font-size;
+}
+
+@mixin Gotham-Light($font-size) {
+  font-family: Gotham-Light;
+  font-size: $font-size;
+}
+
+@mixin Gotham-Bold($font-size) {
+  font-family: Gotham-Bold;
   font-size: $font-size;
 }
