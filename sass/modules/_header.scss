@@ -1,0 +1,17 @@
+.header {
+  background-color: $color-primary;
+
+  .logo {
+    @extend .col-sm-2;
+
+    svg {
+      fill: $color-primary-dark;
+    }
+  }
+
+  .site-title {
+    @extend .col-sm-10;
+    @include Montserrat-Light(16px);
+    color: $color-primary-dark;
+  }
+}

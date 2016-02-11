@@ -1,0 +1,10 @@
+// Fonts
+@mixin Montserrat-Regular($font-size) {
+  font-family: Monsterrat;
+  font-size: $font-size;
+}
+
+@mixin Montserrat-Light($font-size) {
+  font-family: Montserrat-Light;
+  font-size: $font-size;
+}
