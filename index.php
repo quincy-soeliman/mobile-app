@@ -12,6 +12,10 @@
     <h2>ToDo Application</h2>
   </div>
 
+  <div class="add-task">
+    <?php print file_get_contents('images/pen29.svg'); ?>
+  </div>
+
   <div class="nav-bar">
     <div class="page-tabs">
       <button class="dashboard" place="dashboard">
@@ -28,6 +32,11 @@
 </div>
 
 <div class="main-content container">
+  <div class="task-form">
+    <input type="text" class="task-input">
+    <button class="task-submit">Add task</button>
+  </div>
+
   <?php require 'todo.php'; ?>
 </div>
 
@@ -37,5 +46,6 @@
 
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/task-form.js"></script>
 </body>
 </html>
