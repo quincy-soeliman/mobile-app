@@ -22,7 +22,7 @@
 </div>
 
 <div class="main-content container">
-  <!-- -->
+  <?php require 'todo.php'; ?>
 </div>
 
 <div class="footer">

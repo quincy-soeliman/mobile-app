@@ -18,7 +18,7 @@ todo = {
 
 	switcher: function() {
 
-		$(".buttons button").on("click", function(e) {
+		$(".page-tabs a").on("click", function(e) {
 			e.preventDefault();
 			var place = $(this).attr("place");
 
@@ -93,6 +93,6 @@ todo = {
 
 };
 
-$(document).ready( function() {
+$(function() {
 	todo.init();
 });
