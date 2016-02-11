@@ -14,4 +14,16 @@
     @include Montserrat-Light(16px);
     color: $color-primary-dark;
   }
+
+  .nav-bar {
+    .page-tabs {
+      button {
+        @extend .col-sm-4;
+        @include Montserrat-Regular(14px);
+        border: 1px solid $color-secondary-light;
+        background-color: white;
+        color: $color-secondary;
+      }
+    }
+  }
 }

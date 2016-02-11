@@ -18,7 +18,7 @@ todo = {
 
 	switcher: function() {
 
-		$(".page-tabs a").on("click", function(e) {
+		$(".page-tabs button").on("click", function(e) {
 			e.preventDefault();
 			var place = $(this).attr("place");
 
