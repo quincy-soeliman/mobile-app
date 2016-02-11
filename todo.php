@@ -1,9 +1,3 @@
-<div class="page-tabs">
-  <button class="dashboard" place="dashboard">Dashboard</button>
-  <button class="todo" place="todo">Todo</button>
-  <button class="completed" place="completed">completed</button>
-</div>
-
 <h1 class="title">Dashboard</h1>
 
 <div class="todo-container">
