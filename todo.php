@@ -1,6 +1,6 @@
 <h1 class="title">Dashboard</h1>
 
-<div class="todo-container">
+<div class="todo-container" data-place="todo">
   <h2 class="current-list-title">Todo</h2>
   <ul>
     <li>todo 1</li>
@@ -9,7 +9,7 @@
   </ul>
 </div>
 
-<div class="complete-container">
+<div class="complete-container" data-place="completed">
   <h2 class="current-list-title">Completed</h2>
   <ul>
     <li>completed 1</li>

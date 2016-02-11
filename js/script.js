@@ -1,7 +1,7 @@
 'use strict';
 
 var todo = {} || '';
-var pageTitle, todoC, complC, taskInput, taskSubmit;
+var pageTitle, todoC, complC, taskInput, taskSubmit, newTask;
 
 todo = {
 
@@ -14,6 +14,7 @@ todo = {
 
 		todo.loadDash();
 		todo.switcher();
+		todo.handleDataInput();
 	},
 
 	switcher: function() {
@@ -86,8 +87,55 @@ todo = {
 
 	loadData: function(target) {
 		target.find("ul").html("");
+		var targetAttr = target.data("place");
 
-		$.getJSON(".");
+		switch(targetAttr) {
+			case "todo":
+				$.ajax({
+					url: "../json/tasks.json",
+					type: "GET",
+					dataType: "JSON",
+					cache: false,
+					success: function(data) {
+						$(data.todo).each( function(index, value) {
+							target.find("ul").append("<li>"+value.task+"</li>");
+						});
+					}
+				});
+				break;
+
+			case "completed":
+				$.ajax({
+					url: "../json/tasks.json",
+					type: "GET",
+					dataType: "JSON",
+					cache: false,
+					success: function(data) {
+						$(data.completed).each( function(index, value) {
+							target.find("ul").append("<li>"+value.task+"</li>");
+						});
+					}
+				});
+				break;
+		}
+
+	},
+
+	handleDataInput: function() {
+		taskSubmit.on("click", function(e) {
+			e.preventDefault();
+			newTask = taskInput.val();
+			taskInput.val("");
+
+			$.ajax({
+				type : "POST",
+				url : "../json/addtask.php",
+				dataType : 'JSON',
+				data : {
+					json : newTask
+				}
+			});
+		})
 	}
 
 
