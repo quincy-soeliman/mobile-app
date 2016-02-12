@@ -18,5 +18,5 @@
   </ul>
 </div>
 
-<input type="text" class="task-input">
-<button class="task-submit">Add task</button>
+<!--<input type="text" class="task-input">-->
+<!--<button class="task-submit">Add task</button>-->

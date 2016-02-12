@@ -1,7 +1,9 @@
 'use strict';
 
 var todo = {} || '';
-var pageTitle, todoC, complC, taskInput, taskSubmit, newTask;
+var todoTasks = [];
+var completeTasks = [];
+var pageTitle, todoC, complC, taskInput, taskSubmit, newTask, taskText, storedTodo, storedComplete;
 
 todo = {
 
@@ -15,6 +17,7 @@ todo = {
 		todo.loadDash();
 		todo.switcher();
 		todo.handleDataInput();
+		todo.handleCompletion();
 	},
 
 	switcher: function() {
@@ -87,35 +90,28 @@ todo = {
 
 	loadData: function(target) {
 		target.find("ul").html("");
+
+
 		var targetAttr = target.data("place");
 
 		switch(targetAttr) {
 			case "todo":
-				$.ajax({
-					url: "../json/tasks.json",
-					type: "GET",
-					dataType: "JSON",
-					cache: false,
-					success: function(data) {
-						$(data.todo).each( function(index, value) {
-							target.find("ul").append("<li>"+value.task+"</li>");
-						});
+					storedTodo = JSON.parse(localStorage["todoTasks"]);
+
+					for(var i = 0; i < storedTodo.length; ) {
+						target.find("ul").append("<li>"+storedTodo[i]+"</li>");
+						i++;
 					}
-				});
+				todo.handleCompletion();
 				break;
 
 			case "completed":
-				$.ajax({
-					url: "../json/tasks.json",
-					type: "GET",
-					dataType: "JSON",
-					cache: false,
-					success: function(data) {
-						$(data.completed).each( function(index, value) {
-							target.find("ul").append("<li>"+value.task+"</li>");
-						});
+					storedComplete = JSON.parse(localStorage["completeTasks"]);
+
+					for(var a = 0; a < storedComplete.length; ) {
+						target.find("ul").append("<li>"+storedComplete[a]+"</li>");
+						a++;
 					}
-				});
 				break;
 		}
 
@@ -124,18 +120,53 @@ todo = {
 	handleDataInput: function() {
 		taskSubmit.on("click", function(e) {
 			e.preventDefault();
+
 			newTask = taskInput.val();
 			taskInput.val("");
 
-			$.ajax({
-				type : "POST",
-				url : "../json/addtask.php",
-				dataType : 'JSON',
-				data : {
-					json : newTask
+			if(!localStorage["todoTasks"]) {
+				localStorage.setItem("todoTasks", JSON.stringify(todoTasks));
+			}
+
+			todoTasks = JSON.parse(localStorage["todoTasks"]);
+			todoTasks.push(newTask);
+
+			localStorage["todoTasks"] = JSON.stringify(todoTasks);
+
+			todo.loadData(todoC);
+		});
+	},
+
+	handleCompletion: function() {
+		todoC.find("ul li").on("click", function() {
+
+			taskText = $(this).text();
+
+			var complConfirm = confirm("Do you want to set \""+taskText+"\" task as completed?");
+
+			if( complConfirm ) {
+				//Remove selected task
+				todoTasks = JSON.parse(localStorage["todoTasks"]);
+				for ( var i = 0; i < todoTasks.length; i++ ) {
+					if ( todoTasks[i] === taskText ) {
+						todoTasks.splice(i,1);
+					}
 				}
-			});
-		})
+				localStorage["todoTasks"] = JSON.stringify(todoTasks);
+
+				//Add it to completed list
+				if(!localStorage["completeTasks"]) {
+					localStorage.setItem("completeTasks", JSON.stringify(completeTasks));
+				}
+
+				completeTasks = JSON.parse(localStorage["completeTasks"]);
+				completeTasks.push(taskText);
+				localStorage["completeTasks"] = JSON.stringify(completeTasks);
+
+				todo.loadData(todoC);
+				todo.loadData(complC);
+			}
+		});
 	}
 
 
